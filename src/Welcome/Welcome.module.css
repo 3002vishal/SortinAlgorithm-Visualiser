@@ -1,0 +1,27 @@
+.welcome-container{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    height: 92.4vh;
+    width: 100%;
+    color: white;
+}
+.inner-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-top: 100px;
+    /* border: 1px solid; */
+}
+.header{
+    font-family: 'Courier New', Courier, monospace;
+}
+.list-iteam{
+    margin-top: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+.list-iteam ol p{
+    margin-top: 10px;
+    font-size: 1.2rem;
+}

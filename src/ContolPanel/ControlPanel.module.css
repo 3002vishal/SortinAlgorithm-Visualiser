@@ -1,0 +1,50 @@
+.choose-algorithm {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: fit-content;
+    padding: 5px;
+    z-index: 9;
+    position: absolute;
+    margin-top: -26px;
+    background-color: transparent;
+    margin-left: 15px;
+
+}
+
+.choose-algorithm button {
+    margin: 2px 2px;
+    background-color: rgb(38, 49, 43);
+    color: white;
+    padding: 5px;
+    font-size: 14px;
+
+}
+.choose-algorithm button:hover {
+    background-color: rgb(39, 104, 39);
+    transition-duration: .5s;
+}
+
+.control-panel {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    z-index: 9;
+    position: absolute;
+    background-color: transparent;
+    margin-left: 15px;
+    margin-top: 3px;
+}
+
+.control-panel button {
+    background-color: rgb(38, 49, 43);
+    color: white;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+.control-panel button:hover {
+    background-color: rgb(39, 104, 39);
+    transition-duration: .5s;
+}

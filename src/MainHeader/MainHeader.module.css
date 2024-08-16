@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    background-color: black;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px 0;
+    width: 100%;
+    margin-bottom: 1px;
+}
+.container h1{
+    font-weight: bolder;
+}

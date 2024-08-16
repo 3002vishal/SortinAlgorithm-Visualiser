@@ -1,0 +1,9 @@
+.bar-container{
+    display: flex;
+    background-color: black;
+    height: 92.4vh;
+    width:100%;
+    align-items:last baseline;
+    justify-content: center;
+    position: fixed;
+}
