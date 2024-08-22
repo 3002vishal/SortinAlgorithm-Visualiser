@@ -4,6 +4,15 @@ import classes from "./ControlPanel.module.css";
 const ContolPanel = (props) => {
     const [flag, setFlag] = useState(false);
     const [choose, setChoose] = useState('Select Sorting Algorithm.');
+    const [length, setlength]= useState()
+    function handleChange(event)
+    {
+        let temp = parseInt(event.target.value,10)
+        if(temp>=0)
+        setlength(temp)
+        else 
+        setlength()
+    }
     function chooseHandler() {
         setFlag(true);
     }
@@ -12,7 +21,7 @@ const ContolPanel = (props) => {
     }
     function generateArrayHandler() {
         setChoose('Select Sorting Algorithm.');
-        props.generateArray(setChoose);
+        props.generateArray(length);
     }
     function resetArrayHandler() {
         setChoose('Select Sorting Algorithm.');
@@ -78,7 +87,17 @@ const ContolPanel = (props) => {
             <div className={classes["control-panel"]}>
                 <button onClick={chooseHandler} onChange={chooseAlgorithmHandler}>{choose}</button>
                 <button onClick={generateArrayHandler}>Generate Array.</button>
-                {/* <button onClick={resetArrayHandler}>Reset Array.</button> */}
+                <label htmlFor="myInput">Enter something:</label>
+                <div className={classes["text-panel"]}>
+      <input
+        type="number"
+        placeholder="enter size of array"
+        id="myInput"
+        value={length} 
+        onChange={handleChange} 
+      />
+      <p>You typed: {length}</p>
+    </div>
             </div>
         );
     }

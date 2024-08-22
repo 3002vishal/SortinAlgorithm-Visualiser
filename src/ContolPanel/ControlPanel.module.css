@@ -32,8 +32,16 @@
     z-index: 9;
     position: absolute;
     background-color: transparent;
-    margin-left: 15px;
+    margin-left: 1px;
     margin-top: 3px;
+}
+.text-panel{
+    display:flex;
+    justify-content: left;
+    background-color: transparent;
+    margin-left: 1px;
+    margin-top: 3px
+
 }
 
 .control-panel button {

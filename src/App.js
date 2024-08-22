@@ -16,9 +16,9 @@ function App() {
     setArray([...props]);
   }
 
-  function generateArray() {
+  function generateArray(n) {
     const newArray = Array.from(
-      { length: 30 },
+      { length: n },
       () => Math.floor(Math.random() * 10000) + 1
     );
     setArray(newArray);
@@ -39,7 +39,7 @@ function App() {
 
       swap(arr, min_idx, i);
       updateArray(arr);
-      await sleep(20);
+      await sleep(10);
     }
   }
 
@@ -63,12 +63,12 @@ function App() {
       while (j >= 0 && arr[j] > key) {
         arr[j + 1] = arr[j];
         updateArray(arr);
-        await sleep(20);
+        await sleep(10);
         j--;
       }
       arr[j + 1] = key;
       updateArray(arr);
-      await sleep(20);
+      await sleep(10);
     }
   }
 
