@@ -28,12 +28,14 @@ const ContolPanel = (props) => {
         chooseAlgorithmHandler('Quick Sort.');
         setFlag(false);
         let array=[...props.arr];
-        props.quickSort(array,0,array.length);
+        props.quickSort(array,0,array.length-1);
     }
-    // function heapSortHandler() {
-    //     chooseAlgorithmHandler('Heap Sort.');
-    //     setFlag(false);
-    // }
+    function heapSortHandler() {
+        chooseAlgorithmHandler('Heap Sort.');
+        setFlag(false);
+        let array=[...props.arr]
+        props.heapSort(array)
+    }
     function insertionSortHandler() {
         chooseAlgorithmHandler('Insertion Sort.');
         setFlag(false);
@@ -59,11 +61,11 @@ const ContolPanel = (props) => {
     }
     if (flag) {
         return (
-            <div className={classes["choose-algorithm"]} >
+            <div className={classes["choose-algorithm"]}>
                 <header>Choose Sorting Algorith</header>
                 <button onClick={mergeSortHandler}>Merge Sort.</button>
-                {/* <button onClick={quickSortHandler}>Quick Sort.</button> */}
-                {/* <button onClick={heapSortHandler}>Heap Sort.</button> */}
+                <button onClick={quickSortHandler}>Quick Sort.</button> 
+                 <button onClick={heapSortHandler}>Heap Sort.</button> 
                 <button onClick={insertionSortHandler}>Insertion Sort.</button>
                 <button onClick={bubbleSortHandler}>Bubble Sort.</button>
                 <button onClick={selectionSortHandler}>Selection Sort.</button>
