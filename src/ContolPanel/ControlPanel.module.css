@@ -43,6 +43,15 @@
     margin-top: 3px
 
 }
+.choose_speed button{
+    background-color: rgb(39, 104, 39);
+    transition-duration: .5s;
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    width: fit-content;
+
+}
 
 .control-panel button {
     background-color: rgb(38, 49, 43);
@@ -55,4 +64,8 @@
 .control-panel button:hover {
     background-color: rgb(39, 104, 39);
     transition-duration: .5s;
+}
+.choose-button{
+    padding:2px;
+    margin: 2px;
 }

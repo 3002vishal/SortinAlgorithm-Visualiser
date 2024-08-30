@@ -6,12 +6,16 @@ import SortingAlgorithmVisulisor from "./SortingAlgorithmVisulisor/SortingAlgori
 import MainHeader from "./MainHeader/MainHeader";
 import ContolPanel from "./ContolPanel/ControlPanel";
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+function sleep(s) {
+  return new Promise((resolve) => setTimeout(resolve, s));
 }
 function App() {
   const [array, setArray] = useState([]);
-
+  const natural_speed= 10;
+  const [speed, setspeed]= useState(natural_speed);
+  
+  function updateSpeed(s) 
+  {setspeed(natural_speed/(s))}
   function updateArray(props) {
     setArray([...props]);
   }
@@ -39,7 +43,7 @@ function App() {
 
       swap(arr, min_idx, i);
       updateArray(arr);
-      await sleep(10);
+      await sleep(speed);
     }
   }
 
@@ -49,7 +53,7 @@ function App() {
         if (arr[j] > arr[j + 1]) {
           swap(arr, j, j + 1);
           updateArray(arr);
-          await sleep(10);
+          await sleep(speed);
         }
       }
     }
@@ -63,12 +67,12 @@ function App() {
       while (j >= 0 && arr[j] > key) {
         arr[j + 1] = arr[j];
         updateArray(arr);
-        await sleep(10);
+        await sleep(speed);
         j--;
       }
       arr[j + 1] = key;
       updateArray(arr);
-      await sleep(10);
+      await sleep(speed);
     }
   }
 
@@ -89,14 +93,14 @@ async function partition(arr, start, end) {
         if (arr[i] < pivotValue) {
             swap(arr, i, pivotIndex);
             updateArray(arr);
-            await sleep(1);
+            await sleep(speed);
             pivotIndex++;
         }
     }
 
     swap(arr, pivotIndex, end);
     updateArray(arr);
-    await sleep(1);
+    await sleep(speed);
     
     return pivotIndex;
 }
@@ -109,14 +113,11 @@ async function partition(arr, start, end) {
     let right = new Array(n2);
 
     for (let i = 0; i < n1; i++) {
-      //await sleep(10);
       left[i] = ele[low + i];
     }
     for (let i = 0; i < n2; i++) {
-      // await sleep(10);
       right[i] = ele[mid + 1 + i];
     }
-    //await sleep(10);
     let i = 0,
       j = 0,
       k = low;
@@ -124,13 +125,13 @@ async function partition(arr, start, end) {
       if (parseInt(left[i]) <= parseInt(right[j])) {
         ele[k] = left[i];
         updateArray(ele);
-        await sleep(0.1);
+        await sleep(speed);
         i++;
         k++;
       } else {
         ele[k] = right[j];
         updateArray(ele);
-        await sleep(0.1);
+        await sleep(speed);
         j++;
         k++;
       }
@@ -139,14 +140,14 @@ async function partition(arr, start, end) {
       ele[k] = left[i];
 
       updateArray(ele);
-      await sleep(0.1);
+      await sleep(speed);
       i++;
       k++;
     }
     while (j < n2) {
       ele[k] = right[j];
       updateArray(ele);
-      await sleep(0.1);
+      await sleep(speed);
       j++;
       k++;
     }
@@ -163,7 +164,7 @@ async function partition(arr, start, end) {
     {
       swap(ele, i, 0)
       updateArray(ele)
-      await sleep(10)
+      await sleep(speed)
       await heapify(ele,0, i)
       
 
@@ -183,7 +184,7 @@ async function partition(arr, start, end) {
       swap(ele, largest, curr)
       updateArray(ele)
 
-      await sleep(10)
+      await sleep(speed)
        await heapify(ele, largest, n)
     }
 
@@ -217,7 +218,8 @@ async function partition(arr, start, end) {
         quickSort={quickSort}
         heapSort={heapSort}
         mergeSort={mergeSort}
-        arr={array}
+        updateSpeed={updateSpeed}
+        arr={array}        
       />
       <SortingAlgorithmVisulisor array={array} />
     </React.Fragment>
