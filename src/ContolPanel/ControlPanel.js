@@ -15,7 +15,7 @@ const ContolPanel = (props) => {
   }
   function chooseHandler() {
     setFlag(true);
-  }
+  } 
   function chooseAlgorithmHandler(props) {
     setChoose(props);
   }
@@ -117,6 +117,13 @@ const ContolPanel = (props) => {
             ) : (
               `${currentspeed}x`
             )}
+          </button>
+          <button onClick={()=>{props.updatePause()
+            console.log("pause",props.isPause)
+          }}>
+            {props.isPause ? <p> start </p>: <p> pause </p>}
+
+      
           </button>
         </div>
       );

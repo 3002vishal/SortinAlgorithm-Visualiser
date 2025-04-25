@@ -1,26 +1,33 @@
 // App.js
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import SortingAlgorithmVisulisor from "./SortingAlgorithmVisulisor/SortingAlgorithmVisulisor";
 import MainHeader from "./MainHeader/MainHeader";
 import ContolPanel from "./ContolPanel/ControlPanel";
 
-function sleep(s) {
-  return new Promise((resolve) => setTimeout(resolve, s));
-}
+
 function App() {
   const [array, setArray] = useState([]);
   const natural_speed= 10;
   const [speed, setspeed]= useState(natural_speed);
+  const [pause, setpause] = useState(false);
   
   function updateSpeed(s) 
   {setspeed(natural_speed/(s))}
   function updateArray(props) {
     setArray([...props]);
   }
-
+  function sleep(s) {
+    return new Promise((resolve) => setTimeout(resolve, s));
+  }
+  function updatePause(){
+   const newpause = (!pause)
+    setpause(newpause);
+  }
+  
   function generateArray(n) {
+    setpause(false);
     const newArray = Array.from(
       { length: n },
       () => Math.floor(Math.random() * 10000) + 1
@@ -49,7 +56,12 @@ function App() {
 
   async function bubbleSort(arr, n) {
     for (let i = 0; i < n - 1; i++) {
+      console.log("/n");
       for (let j = 0; j < n - i - 1; j++) {
+        while(pause){
+          await sleep(100);
+        }
+        console.log(j);
         if (arr[j] > arr[j + 1]) {
           swap(arr, j, j + 1);
           updateArray(arr);
@@ -97,6 +109,7 @@ async function partition(arr, start, end) {
             pivotIndex++;
         }
     }
+    
 
     swap(arr, pivotIndex, end);
     updateArray(arr);
@@ -206,6 +219,7 @@ async function partition(arr, start, end) {
     arr[j] = temp;
   }
 
+
   return (
     <React.Fragment>
       <MainHeader />
@@ -219,11 +233,13 @@ async function partition(arr, start, end) {
         heapSort={heapSort}
         mergeSort={mergeSort}
         updateSpeed={updateSpeed}
-        arr={array}        
+        arr={array}  
+        updatePause= {updatePause}  
+        isPause={pause}    
       />
       <SortingAlgorithmVisulisor array={array} />
     </React.Fragment>
   );
-}
+}  
 
 export default App;
